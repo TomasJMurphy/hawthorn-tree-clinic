@@ -1,0 +1,134 @@
+media:
+  input: images
+  output: /images
+
+content:
+  - name: clinic_site
+    label: Edit Clinic Website
+    type: file
+    path: content.json
+    fields:
+      - name: hero_photo
+        label: Maureen & Blackboy Portrait Photo
+        type: image
+      - name: hero_title
+        label: Main Hero Headline
+        type: string
+      - name: hero_p1
+        label: Hero Intro Paragraph 1
+        type: text
+      - name: hero_p2
+        label: Hero Intro Paragraph 2
+        type: text
+      - name: hero_quote
+        label: Portrait Card Quote
+        type: string
+      - name: about_photo
+        label: About Section Artwork / Photo
+        type: image
+      - name: about_title
+        label: About Section Heading
+        type: string
+      - name: about_p1
+        label: About Paragraph 1
+        type: text
+      - name: about_p2
+        label: About Paragraph 2
+        type: text
+      - name: about_p3
+        label: About Paragraph 3
+        type: text
+      - name: t1_title
+        label: Treatment 1 Title
+        type: string
+      - name: t1_sub
+        label: Treatment 1 Subtitle
+        type: string
+      - name: t1_desc
+        label: Treatment 1 Description
+        type: text
+      - name: t1_bullets
+        label: Treatment 1 Bullet Points
+        type: string
+        list: true
+      - name: t2_title
+        label: Treatment 2 Title
+        type: string
+      - name: t2_sub
+        label: Treatment 2 Subtitle
+        type: string
+      - name: t2_desc
+        label: Treatment 2 Description
+        type: text
+      - name: t2_bullets
+        label: Treatment 2 Bullet Points
+        type: string
+        list: true
+      - name: t3_title
+        label: Treatment 3 Title
+        type: string
+      - name: t3_sub
+        label: Treatment 3 Subtitle
+        type: string
+      - name: t3_desc
+        label: Treatment 3 Description
+        type: text
+      - name: t3_bullets
+        label: Treatment 3 Bullet Points
+        type: string
+        list: true
+      - name: conditions_list
+        label: Common Conditions Supported
+        type: string
+        list: true
+      - name: burren_photo
+        label: Burren Landscape Photo
+        type: image
+      - name: burren_title
+        label: Burren Section Heading
+        type: string
+      - name: burren_p1
+        label: Burren Paragraph 1
+        type: text
+      - name: burren_p2
+        label: Burren Paragraph 2
+        type: text
+      - name: burren_p3
+        label: Burren Paragraph 3
+        type: text
+      - name: faq1_q
+        label: FAQ 1 Question
+        type: string
+      - name: faq1_a
+        label: FAQ 1 Answer
+        type: text
+      - name: faq2_q
+        label: FAQ 2 Question
+        type: string
+      - name: faq2_a
+        label: FAQ 2 Answer
+        type: text
+      - name: faq3_q
+        label: FAQ 3 Question
+        type: string
+      - name: faq3_a
+        label: FAQ 3 Answer
+        type: text
+      - name: faq4_q
+        label: FAQ 4 Question
+        type: string
+      - name: faq4_a
+        label: FAQ 4 Answer
+        type: text
+      - name: contact_location
+        label: Clinic Location
+        type: string
+      - name: contact_phone
+        label: Direct Telephone
+        type: string
+      - name: contact_email
+        label: Email Address
+        type: string
+      - name: contact_hours
+        label: Consultation Hours
+        type: string
