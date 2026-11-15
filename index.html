@@ -544,7 +544,7 @@
     <!-- Pure Vanilla JS -->
     <script src="script.js"></script>
 <script>
-  fetch('content.json')
+  fetch('content.json?v=' + Date.now(), { cache: 'no-store' })
     .then(r => r.json())
     .then(d => {
       const ok = v => v && typeof v === 'string' && !v.startsWith('Edit ');
@@ -575,12 +575,12 @@
         const s = card.querySelector('.treatment-subtitle');
         const p = card.querySelector('.treatment-desc');
         const ul = card.querySelector('.treatment-list');
-        if (t && ok(d[`t${n}_title`])) t.textContent = d[`t${n}_title`];
-        if (s && ok(d[`t${n}_sub`])) s.textContent = d[`t${n}_sub`];
-        if (p && ok(d[`t${n}_desc`])) p.textContent = d[`t${n}_desc`];
-        if (ul && Array.isArray(d[`t${n}_bullets`]) && d[`t${n}_bullets`].length > 0) {
+        if (t && ok(d['t' + n + '_title'])) t.textContent = d['t' + n + '_title'];
+        if (s && ok(d['t' + n + '_sub'])) s.textContent = d['t' + n + '_sub'];
+        if (p && ok(d['t' + n + '_desc'])) p.textContent = d['t' + n + '_desc'];
+        if (ul && Array.isArray(d['t' + n + '_bullets']) && d['t' + n + '_bullets'].length > 0) {
           ul.innerHTML = '';
-          d[`t${n}_bullets`].forEach(item => {
+          d['t' + n + '_bullets'].forEach(item => {
             if (item && item.trim()) {
               const li = document.createElement('li');
               li.textContent = item;
@@ -612,8 +612,8 @@
         const n = i + 1;
         const q = item.querySelector('.faq-question span:first-child');
         const a = item.querySelector('.faq-answer p');
-        if (q && ok(d[`faq${n}_q`])) q.textContent = d[`faq${n}_q`];
-        if (a && ok(d[`faq${n}_a`])) a.textContent = d[`faq${n}_a`];
+        if (q && ok(d['faq' + n + '_q'])) q.textContent = d['faq' + n + '_q'];
+        if (a && ok(d['faq' + n + '_a'])) a.textContent = d['faq' + n + '_a'];
       });
 
       const info = document.querySelectorAll('.info-card');
@@ -630,9 +630,8 @@
         mail.href = 'mailto:' + d.contact_email;
       }
       if (c3 && ok(d.contact_hours)) c3.querySelector('p').textContent = d.contact_hours;
-
+    });
 </script>
-
 
 </body>
 </html>
