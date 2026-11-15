@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceSelect = document.getElementById('userService');
 
     serviceButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', () => {
             const serviceName = btn.getAttribute('data-service-name');
             if (serviceSelect && serviceName) {
                 for (let i = 0; i < serviceSelect.options.length; i++) {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Appointment Enquiry Form
+    // 4. Appointment Enquiry Form (Connected to Netlify Forms)
     const enquiryForm = document.getElementById('enquiryForm');
     const successBox = document.getElementById('successBox');
     const successTitle = document.getElementById('successTitle');
@@ -78,16 +78,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = emailInput ? emailInput.value.trim() : '';
             const service = serviceInput ? serviceInput.value : 'Acupuncture';
 
-            // Show friendly confirmation
-            if (successTitle) {
-                successTitle.textContent = `Thank you, ${name}!`;
-            }
-            if (successDesc) {
-                successDesc.textContent = `Your enquiry regarding ${service} has been received. Maureen will be in touch directly with you via ${email} to discuss your appointment.`;
-            }
+            const formData = new FormData(enquiryForm);
 
-            enquiryForm.style.display = 'none';
-            successBox.style.display = 'block';
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    // Show friendly confirmation
+                    if (successTitle) {
+                        successTitle.textContent = `Thank you, ${name}!`;
+                    }
+                    if (successDesc) {
+                        successDesc.textContent = `Your enquiry regarding ${service} has been received. Maureen will be in touch directly with you via ${email} to discuss your appointment.`;
+                    }
+
+                    enquiryForm.style.display = 'none';
+                    successBox.style.display = 'block';
+                })
+                .catch(() => {
+                    alert('Sorry, there was a problem sending your enquiry. Please call or email directly.');
+                });
         });
 
         if (resetFormBtn) {
