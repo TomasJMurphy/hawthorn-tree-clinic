@@ -453,7 +453,8 @@
                         </div>
 
                         <!-- Main Form -->
-                        <form id="enquiryForm" class="enquiry-form">
+                       <form id="enquiryForm" name="enquiry" method="POST" data-netlify="true" class="enquiry-form">
+                            <input type="hidden" name="form-name" value="enquiry">   
                             <div class="form-row">
                                 <div class="form-field">
                                     <label for="userName">Your Full Name *</label>
